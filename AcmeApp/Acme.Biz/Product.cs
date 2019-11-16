@@ -14,6 +14,11 @@ namespace Acme.Biz
         public Product()
         {
             Console.WriteLine("Product instance created");
+            
+            //We may not want to initialize the class each time because we need it in specific situations
+            //Init here when we want it every time
+
+            //this.ProductVendor = new Vendor();
         }
         public Product(int productId, string productName, string description) : this()
         {
@@ -45,8 +50,29 @@ namespace Acme.Biz
             set { productId = value; }
         }
 
+        private Vendor productVendor;
+
+        public Vendor ProductVendor
+        {
+            get 
+            {
+                //Lazy loading - instantiate when needed
+                if (productVendor == null)
+                {
+                    productVendor = new Vendor();
+                }
+                return productVendor;
+            }
+            set { productVendor = value; }
+        }
+
+
         public string SaytheProductName()
         {
+            //Associate classes - Instantiate here when only one method needs the class
+            //var vendor = new Vendor();
+            //vendor.SendWelcomeEmail("Message from Product class");
+
             return "The product name is : " + productName;
         }
 
