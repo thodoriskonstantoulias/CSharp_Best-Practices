@@ -24,6 +24,7 @@ namespace Acme.Biz
 
             //this.ProductVendor = new Vendor();
             this.MinimalPrice = 9.6M;
+            this.Category = "Tools";
         }
         public Product(int productId, string productName, string description) : this()
         {
@@ -59,7 +60,6 @@ namespace Acme.Biz
             }
         }
         private string description;
-
         public string Description
         {
             get { return description; }
@@ -74,7 +74,6 @@ namespace Acme.Biz
         }
 
         private Vendor productVendor;
-
         public Vendor ProductVendor
         {
             get 
@@ -88,7 +87,11 @@ namespace Acme.Biz
             }
             set { productVendor = value; }
         }
-
+        public string Category { get; set; }
+        //We can set the value in the property 
+        public int SequenceNumber { get; set; } = 1;
+        //Expression-bodied properties for ProductCode
+        public string ProductCode => this.Category + "-" + this.SequenceNumber;
         private DateTime? availabilityDate;
 
         public DateTime? AvailabilityDate

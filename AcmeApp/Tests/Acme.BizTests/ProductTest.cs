@@ -24,5 +24,21 @@ namespace Acme.BizTests
             var actual = product.ProductName;
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void CategoryDefaultValue()
+        {
+            var product = new Product();
+            var expected = "Tools";
+            var actual = product.Category;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void ProductCodeTestValue()
+        {
+            var product = new Product();
+            var expected = "Tools-1";
+            var actual = product.ProductCode;
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
