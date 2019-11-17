@@ -32,13 +32,31 @@ namespace Acme.Biz
             Description = description;
             Console.WriteLine("Product instance with parameter created");
         }
-       
+        //To make getters and setters meaningfull add code to transform the input
         private string productName;
 
         public string ProductName
         {
-            get { return productName; }
-            set { productName = value; }
+            get 
+            {
+                var formattedValue = productName?.Trim();
+                return formattedValue;
+            }
+            set 
+            {
+                if (value.Length < 3)
+                {
+                    ValidationMessage = "Product name must be at least 3 characters";
+                }
+                else if (value.Length > 20) 
+                {
+                    ValidationMessage = "Product name must not be more than 20 characters";
+                }
+                else
+                {
+                    productName = value;
+                }              
+            }
         }
         private string description;
 
@@ -78,6 +96,8 @@ namespace Acme.Biz
             get { return availabilityDate; }
             set { availabilityDate = value; }
         }
+
+        public string ValidationMessage { get; private set; }
 
         public string SaytheProductName()
         {

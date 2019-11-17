@@ -15,5 +15,14 @@ namespace Acme.BizTests
             var actual = product.SaytheProductName();
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void ProductNameFormat()
+        {
+            var product = new Product();
+            var expected = "Product name test";
+            product.ProductName = " Product name test ";
+            var actual = product.ProductName;
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
