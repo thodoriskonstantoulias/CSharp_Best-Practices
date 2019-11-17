@@ -33,6 +33,7 @@ namespace Acme.Biz
             Description = description;
             Console.WriteLine("Product instance with parameter created");
         }
+        public decimal Cost { get; set; }
         //To make getters and setters meaningfull add code to transform the input
         private string productName;
 
@@ -110,7 +111,14 @@ namespace Acme.Biz
             return "The product name is : " + productName + " and the date is " + availabilityDate?.ToShortDateString();
         }
 
+        //Example for method overriding below
+        public override string ToString()
+        {
+            return this.productName + " (" + this.productId + ")";
+        }
 
+        //Example of expression-bodied methods - c# 6.0
+        public decimal CalculateSuggestedPrice(decimal percent) => this.Cost + (this.Cost * percent / 100);
 
     }
 }

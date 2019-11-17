@@ -40,5 +40,22 @@ namespace Acme.BizTests
             var actual = product.ProductCode;
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void ToStringTest()
+        {
+            var product = new Product(1,"Saw",null);
+            var expected = "Saw (1)";
+            var actual = product.ToString();
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void CalculateSuggestedPriceTest()
+        {
+            var product = new Product(1, "Saw", null);
+            product.Cost = 50M;
+            var expected = 55m;
+            var actual = product.CalculateSuggestedPrice(10M);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
