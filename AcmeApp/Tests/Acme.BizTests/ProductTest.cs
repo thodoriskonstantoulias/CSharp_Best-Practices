@@ -11,7 +11,7 @@ namespace Acme.BizTests
         public void SaytheProductNameTest()
         {
             var product = new Product(1, "mobile phone","descr for mobile");
-            var expected = "The product name is : mobile phone";
+            var expected = "The product name is : mobile phone and the date is ";
             var actual = product.SaytheProductName();
             Assert.AreEqual(expected, actual);
         }
