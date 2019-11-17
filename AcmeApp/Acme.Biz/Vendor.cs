@@ -12,6 +12,9 @@ namespace Acme.Biz
     /// </summary>
     public class Vendor 
     {
+        //We will use the enums for clarity as method arguments
+        public enum IncludeAddress { Yes, No };
+        public enum SendCopy { Yes, No };
         public int VendorId { get; set; }
         public string CompanyName { get; set; }
         public string Email { get; set; }
@@ -29,7 +32,7 @@ namespace Acme.Biz
                                                         this.Email);
             return confirmation;
         }
-        //How methods shold be written, below
+        //How methods should be written, below
 
         /// <summary>
         /// Sends a product order to the vendor
@@ -67,8 +70,23 @@ namespace Acme.Biz
             }
             var operationResult = new OperationResult(success, orderText);
             return operationResult;
+        }
 
-
+        /// <summary>
+        /// Sends a product order to the vendor
+        /// </summary>
+        /// <param name="product">Product to order</param>
+        /// <param name="quantity">Quantity of the product to orde</param>
+        /// <param name="includeAdress">True to include shipping address</param>
+        /// <param name="sendCopy">True to send copy</param>
+        /// <returns>Success flag and order text</returns>
+        public OperationResult PlaceOrder(Product product, int quantity, IncludeAddress includeAddress, SendCopy sendCopy)
+        {
+            var orderTest = "Test";
+            if (includeAddress == IncludeAddress.Yes) orderTest += " With Address";
+            if (sendCopy == SendCopy.Yes) orderTest += " With Copy";
+            var operationResult = new OperationResult(true,orderTest);
+            return operationResult;
         }
 
     }
