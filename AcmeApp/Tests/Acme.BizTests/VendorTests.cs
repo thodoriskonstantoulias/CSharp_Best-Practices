@@ -93,7 +93,7 @@ namespace Acme.Biz.Tests
             var actual = vendor.PlaceOrder(null, 3);
         }
 
-        //We name the arguments for clarity
+        //We name the arguments for clarity or define enums for better understanding
         [TestMethod()]
         public void PlaceOrderTest_WithAddress()
         {

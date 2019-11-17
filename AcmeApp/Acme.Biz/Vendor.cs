@@ -89,5 +89,23 @@ namespace Acme.Biz
             return operationResult;
         }
 
+        //The following is to practice with string methods
+        public override string ToString()
+        {
+            //string vendorInfo = "Vendor : " + this.CompanyName;
+
+            //Test nullable types
+            string vendorInfo = null;
+            string result;
+            if (!string.IsNullOrWhiteSpace(vendorInfo))
+            {
+                result = vendorInfo.ToLower();
+                result = vendorInfo.ToUpper();
+            }
+            
+
+            return vendorInfo;
+        }
+
     }
 }

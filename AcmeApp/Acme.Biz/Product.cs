@@ -92,7 +92,10 @@ namespace Acme.Biz
         //We can set the value in the property 
         public int SequenceNumber { get; set; } = 1;
         //Expression-bodied properties for ProductCode
-        public string ProductCode => this.Category + "-" + this.SequenceNumber;
+        //public string ProductCode => this.Category + "-" + this.SequenceNumber;
+        //And we can format it like below 
+        public string ProductCode => $"{this.Category}-{this.SequenceNumber}";
+
         private DateTime? availabilityDate;
 
         public DateTime? AvailabilityDate
